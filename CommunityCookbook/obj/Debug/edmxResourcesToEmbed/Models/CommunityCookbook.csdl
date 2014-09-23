@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CommunityCookbook" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="IngredientMeasurement">
+    <Key>
+      <PropertyRef Name="ingredientID" />
+      <PropertyRef Name="measurementID" />
+    </Key>
+    <Property Name="ingredientID" Type="Int32" Nullable="false" />
+    <Property Name="measurementID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="ingredientID" />
+      <PropertyRef Name="ingredientName" />
+      <PropertyRef Name="optional" />
+    </Key>
+    <Property Name="ingredientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ingredientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ingredientDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="optional" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InstructionIngredient">
+    <Key>
+      <PropertyRef Name="instructionID" />
+      <PropertyRef Name="ingredientID" />
+    </Key>
+    <Property Name="instructionID" Type="Int32" Nullable="false" />
+    <Property Name="ingredientID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Instruction">
+    <Key>
+      <PropertyRef Name="instructionID" />
+      <PropertyRef Name="instruction1" />
+      <PropertyRef Name="duration" />
+    </Key>
+    <Property Name="instructionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="instruction1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="duration" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Measurement">
+    <Key>
+      <PropertyRef Name="measurementID" />
+      <PropertyRef Name="amount" />
+      <PropertyRef Name="unit" />
+    </Key>
+    <Property Name="measurementID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <Property Name="unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecipeCategory">
+    <Key>
+      <PropertyRef Name="categoryID" />
+      <PropertyRef Name="category" />
+    </Key>
+    <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RecipeInstruction">
+    <Key>
+      <PropertyRef Name="recipeID" />
+      <PropertyRef Name="instructionID" />
+    </Key>
+    <Property Name="recipeID" Type="Int32" Nullable="false" />
+    <Property Name="instructionID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Recipe">
+    <Key>
+      <PropertyRef Name="recipeID" />
+      <PropertyRef Name="posterID" />
+      <PropertyRef Name="recipeName" />
+    </Key>
+    <Property Name="recipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="posterID" Type="Int32" Nullable="false" />
+    <Property Name="recipeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="recipeDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="categoryID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="username" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="CommunityCookbookEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="IngredientMeasurements" EntityType="Self.IngredientMeasurement" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+    <EntitySet Name="InstructionIngredients" EntityType="Self.InstructionIngredient" />
+    <EntitySet Name="Instructions" EntityType="Self.Instruction" />
+    <EntitySet Name="Measurements" EntityType="Self.Measurement" />
+    <EntitySet Name="RecipeCategories" EntityType="Self.RecipeCategory" />
+    <EntitySet Name="RecipeInstructions" EntityType="Self.RecipeInstruction" />
+    <EntitySet Name="Recipes" EntityType="Self.Recipe" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+  </EntityContainer>
+</Schema>
