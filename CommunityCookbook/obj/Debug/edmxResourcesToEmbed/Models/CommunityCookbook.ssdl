@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CommunityCookbook.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.IngredientMeasurements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IngredientMeasurements">
+    <Key>
+      <PropertyRef Name="ingredientID" />
+      <PropertyRef Name="measurementID" />
+    </Key>
+    <Property Name="ingredientID" Type="int" Nullable="false" />
+    <Property Name="measurementID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.Ingredients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Ingredients">
+    <Key>
+      <PropertyRef Name="ingredientID" />
+      <PropertyRef Name="ingredientName" />
+      <PropertyRef Name="optional" />
+    </Key>
+    <Property Name="ingredientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ingredientName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ingredientDescription" Type="nvarchar" MaxLength="250" />
+    <Property Name="optional" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.InstructionIngredients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="InstructionIngredients">
+    <Key>
+      <PropertyRef Name="instructionID" />
+      <PropertyRef Name="ingredientID" />
+    </Key>
+    <Property Name="instructionID" Type="int" Nullable="false" />
+    <Property Name="ingredientID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.Instructions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Instructions">
+    <Key>
+      <PropertyRef Name="instructionID" />
+      <PropertyRef Name="instruction" />
+      <PropertyRef Name="duration" />
+    </Key>
+    <Property Name="instructionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="instruction" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="duration" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.Measurements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Measurements">
+    <Key>
+      <PropertyRef Name="measurementID" />
+      <PropertyRef Name="amount" />
+      <PropertyRef Name="unit" />
+    </Key>
+    <Property Name="measurementID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.RecipeCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RecipeCategories">
+    <Key>
+      <PropertyRef Name="categoryID" />
+      <PropertyRef Name="category" />
+    </Key>
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.RecipeInstructions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RecipeInstructions">
+    <Key>
+      <PropertyRef Name="recipeID" />
+      <PropertyRef Name="instructionID" />
+    </Key>
+    <Property Name="recipeID" Type="int" Nullable="false" />
+    <Property Name="instructionID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.Recipes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Recipes">
+    <Key>
+      <PropertyRef Name="recipeID" />
+      <PropertyRef Name="posterID" />
+      <PropertyRef Name="recipeName" />
+    </Key>
+    <Property Name="recipeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="posterID" Type="int" Nullable="false" />
+    <Property Name="recipeName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="recipeDescription" Type="nvarchar" MaxLength="1000" />
+    <Property Name="categoryID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CommunityCookbook.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="username" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="CommunityCookbookStoreContainer">
+    <EntitySet Name="IngredientMeasurements" EntityType="Self.IngredientMeasurements" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [IngredientMeasurements].[ingredientID] AS [ingredientID], 
+    [IngredientMeasurements].[measurementID] AS [measurementID]
+    FROM [dbo].[IngredientMeasurements] AS [IngredientMeasurements]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredients" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Ingredients].[ingredientID] AS [ingredientID], 
+    [Ingredients].[ingredientName] AS [ingredientName], 
+    [Ingredients].[ingredientDescription] AS [ingredientDescription], 
+    [Ingredients].[optional] AS [optional]
+    FROM [dbo].[Ingredients] AS [Ingredients]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="InstructionIngredients" EntityType="Self.InstructionIngredients" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [InstructionIngredients].[instructionID] AS [instructionID], 
+    [InstructionIngredients].[ingredientID] AS [ingredientID]
+    FROM [dbo].[InstructionIngredients] AS [InstructionIngredients]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Instructions" EntityType="Self.Instructions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Instructions].[instructionID] AS [instructionID], 
+    [Instructions].[instruction] AS [instruction], 
+    [Instructions].[duration] AS [duration]
+    FROM [dbo].[Instructions] AS [Instructions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Measurements" EntityType="Self.Measurements" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Measurements].[measurementID] AS [measurementID], 
+    [Measurements].[amount] AS [amount], 
+    [Measurements].[unit] AS [unit]
+    FROM [dbo].[Measurements] AS [Measurements]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RecipeCategories" EntityType="Self.RecipeCategories" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RecipeCategories].[categoryID] AS [categoryID], 
+    [RecipeCategories].[category] AS [category]
+    FROM [dbo].[RecipeCategories] AS [RecipeCategories]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RecipeInstructions" EntityType="Self.RecipeInstructions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RecipeInstructions].[recipeID] AS [recipeID], 
+    [RecipeInstructions].[instructionID] AS [instructionID]
+    FROM [dbo].[RecipeInstructions] AS [RecipeInstructions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Recipes" EntityType="Self.Recipes" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Recipes].[recipeID] AS [recipeID], 
+    [Recipes].[posterID] AS [posterID], 
+    [Recipes].[recipeName] AS [recipeName], 
+    [Recipes].[recipeDescription] AS [recipeDescription], 
+    [Recipes].[categoryID] AS [categoryID]
+    FROM [dbo].[Recipes] AS [Recipes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Users].[userID] AS [userID], 
+    [Users].[username] AS [username], 
+    [Users].[password] AS [password], 
+    [Users].[firstName] AS [firstName], 
+    [Users].[lastName] AS [lastName]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
